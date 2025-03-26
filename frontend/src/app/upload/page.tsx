@@ -24,7 +24,7 @@ export default function UploadPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/datasets/datasets", {
+      const res = await fetch("https://webownik-backend.onrender.com/datasets/datasets", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -57,7 +57,7 @@ export default function UploadPage() {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/datasets/questions/${dataset}`, {
+      const res = await fetch(`https://webownik-backend.onrender.com/datasets/questions/${dataset}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -103,7 +103,7 @@ export default function UploadPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/questions/upload-folder/", {
+      const res = await fetch("https://webownik-backend.onrender.com/questions/upload-folder/", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -135,7 +135,7 @@ export default function UploadPage() {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/datasets/datasets/${name}`, {
+      const res = await fetch(`https://webownik-backend.onrender.com/datasets/datasets/${name}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

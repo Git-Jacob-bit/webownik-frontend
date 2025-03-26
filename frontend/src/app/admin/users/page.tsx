@@ -27,7 +27,7 @@ export default function AdminUsersPage() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        fetch("http://localhost:8000/users/all/", {
+        fetch("https://webownik-backend.onrender.com/users/all/", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -46,7 +46,7 @@ export default function AdminUsersPage() {
         if (!token) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/users/${userId}/`, {
+            const res = await fetch(`https://webownik-backend.onrender.com/users/${userId}/`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

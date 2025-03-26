@@ -28,7 +28,7 @@ export default function RegisterPage() {
     formData.append("password", password);
 
     try {
-      const res = await fetch("http://localhost:8000/users/register/", {
+      const res = await fetch("https://webownik-backend.onrender.com/users/register/", {
         method: "POST",
         body: formData,
       });

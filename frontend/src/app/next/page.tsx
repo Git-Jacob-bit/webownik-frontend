@@ -40,7 +40,7 @@ export default function QuizPage() {
         }
 
         try {
-            const res = await fetch("http://127.0.0.1:8000/quiz/quiz/next/", {
+            const res = await fetch("https://webownik-backend.onrender.com/quiz/quiz/next/", {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             const data = await res.json();
@@ -89,7 +89,7 @@ export default function QuizPage() {
             return;
         }
         try {
-            const res = await fetch("http://127.0.0.1:8000/quiz/quiz/status/", {
+            const res = await fetch("https://webownik-backend.onrender.com/quiz/quiz/status/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -137,7 +137,7 @@ export default function QuizPage() {
             return;
         }
 
-        const url = `http://127.0.0.1:8000/quiz/quiz/answer/?question_id=${question.id}`; // ✅ `question_id` w URL
+        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}`; // ✅ `question_id` w URL
         const body = JSON.stringify(validAnswers); // ✅ Wysyłamy czystą listę liczb
 
         console.log("📤 Wysyłane dane (JSON):", body, "➡️ do URL:", url); // Debugowanie

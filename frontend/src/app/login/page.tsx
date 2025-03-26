@@ -17,7 +17,7 @@ export default function LoginPage() {
     formData.append("password", password);
 
     try {
-      const res = await fetch("http://localhost:8000/users/token/", {
+      const res = await fetch("https://webownik-backend.onrender.com/users/token/", {
         method: "POST",
         body: formData,
       });

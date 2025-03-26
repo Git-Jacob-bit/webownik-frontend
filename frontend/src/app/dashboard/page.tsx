@@ -22,7 +22,7 @@ export default function Dashboard() {
       return;
     }
 
-    fetch("http://localhost:8000/users/me/", {
+    fetch("https://webownik-backend.onrender.com/users/me/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {

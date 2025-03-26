@@ -15,7 +15,7 @@ export default function ForgotPasswordPage() {
     formData.append("email", email);
 
     try {
-      const res = await fetch("http://localhost:8000/users/password-reset-request", {
+      const res = await fetch("https://webownik-backend.onrender.com/users/password-reset-request", {
         method: "POST",
         body: formData,
       });

@@ -40,7 +40,7 @@ export default function QuizPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/datasets/datasets", {
+      const res = await fetch("https://webownik-backend.onrender.com/datasets/datasets", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -63,7 +63,7 @@ export default function QuizPage() {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/quiz/quiz/status/", {
+      const res = await fetch("https://webownik-backend.onrender.com/quiz/quiz/status/", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -93,7 +93,7 @@ export default function QuizPage() {
 
     try {
       // Sprawdzanie czy sesja quizu już trwa
-      const statusRes = await fetch("http://127.0.0.1:8000/quiz/quiz/status/", {
+      const statusRes = await fetch("https://webownik-backend.onrender.com/quiz/quiz/status/", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -109,7 +109,7 @@ export default function QuizPage() {
       // Resetowanie zaznaczenia bazy
       setSelectedDataset(null);
 
-      const res = await fetch(`http://127.0.0.1:8000/quiz/quiz/?dataset_name=${encodeURIComponent(selectedDataset)}`, {
+      const res = await fetch(`https://webownik-backend.onrender.com/quiz/quiz/?dataset_name=${encodeURIComponent(selectedDataset)}`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -144,7 +144,7 @@ export default function QuizPage() {
     }
 
     try {
-      const statusRes = await fetch("http://127.0.0.1:8000/quiz/quiz/status/", {
+      const statusRes = await fetch("https://webownik-backend.onrender.com/quiz/quiz/status/", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -172,7 +172,7 @@ export default function QuizPage() {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/quiz/quiz/reset/", {
+      const res = await fetch("https://webownik-backend.onrender.com/quiz/quiz/reset/", {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`

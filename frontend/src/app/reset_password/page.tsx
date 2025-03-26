@@ -29,7 +29,7 @@ function FormWithSearchParams() {
       formData.append("new_password", password)
 
       const res = await fetch(
-        `http://localhost:8000/users/reset-password?token=${token}`,
+        `https://webownik-backend.onrender.com/users/reset-password?token=${token}`,
         {
           method: "POST",
           body: formData,
