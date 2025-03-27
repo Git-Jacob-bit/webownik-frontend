@@ -9,14 +9,27 @@ export default function SummaryPage() {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    // Pobierz dane z localStorage po zakończeniu quizu
-    const c = localStorage.getItem("correctCount");
-    const w = localStorage.getItem("wrongCount");
-    const t = localStorage.getItem("totalTime");
-
-    setCorrect(c ? parseInt(c) : 0);
-    setWrong(w ? parseInt(w) : 0);
-    setTime(t ? parseInt(t) : 0);
+    useEffect(() => {
+      const fetchStats = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+    
+        const res = await fetch("https://webownik-backend.onrender.com/score/me", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+    
+        if (res.ok) {
+          const data = await res.json();
+          setCorrect(data.correct);
+          setWrong(data.incorrect);
+          setTime(data.time_spent);
+        } else {
+          console.error("Błąd pobierania statystyk");
+        }
+      };
+    
+      fetchStats();
+    }, []);    
   }, []);
 
   const total = correct + wrong;
