@@ -137,12 +137,9 @@ export default function QuizPage() {
             return;
         }
 
-        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?time=${time}`;
+        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}&time=${time}`;
+        const body = JSON.stringify(validAnswers); // tylko lista ID
 
-        const body = JSON.stringify({
-            question_id: question.id,
-            answers: validAnswers,
-        });
 
         try {
             const res = await fetch(url, {
