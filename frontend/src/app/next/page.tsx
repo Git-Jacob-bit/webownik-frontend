@@ -137,8 +137,9 @@ export default function QuizPage() {
             return;
         }
 
-        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}`; // ✅ `question_id` w URL
-        const body = JSON.stringify(validAnswers); // ✅ Wysyłamy czystą listę liczb
+        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}&time=${time}`;
+        const body = JSON.stringify(validAnswers); // <--- tylko lista, np. [2,3]
+
 
         console.log("📤 Wysyłane dane (JSON):", body, "➡️ do URL:", url); // Debugowanie
 
@@ -226,7 +227,7 @@ export default function QuizPage() {
                 </button>
 
                 <h2 className="text-2xl font-bold mb-4 text-center">
-                    {datasetName ? `${datasetName}`: ""}
+                    {datasetName ? `${datasetName}` : ""}
                 </h2>
 
 
