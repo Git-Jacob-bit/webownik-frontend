@@ -31,6 +31,27 @@ export default function QuizPage() {
         fetchQuizStatus();
     }, []);
 
+    useEffect(() => {
+        const fetchStats = async () => {
+            const token = localStorage.getItem("token");
+            if (!token) return;
+
+            const res = await fetch("https://webownik-backend.onrender.com/score/me", {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                setCorrectCount(data.correct || 0);
+                setWrongCount(data.incorrect || 0);
+                setTime(data.time_spent || 0);
+            }
+        };
+
+        fetchStats();
+    }, []);
+
+
     const fetchNextQuestion = async () => {
         setLoading(true);
         const token = localStorage.getItem("token");
