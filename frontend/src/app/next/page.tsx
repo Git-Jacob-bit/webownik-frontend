@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function QuizPage() {
     const router = useRouter();
-    const [question, setQuestion] = useState<{ id: number; question_text: string; answers: { id: number; text: string }[] } | null>(null);
+    const [question, setQuestion] = useState<{ id: number; question_text: string; answers: { id: number; text: string }[]; dataset_name: string } | null>(null);
     const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
     const [feedback, setFeedback] = useState<{ correct: boolean; quiz_finished?: boolean } | null>(null);
     const [loading, setLoading] = useState(false);
@@ -25,6 +25,13 @@ export default function QuizPage() {
             setDatasetName(decodeURIComponent(name));
         }
     }, []);
+
+    useEffect(() => {
+        if (question?.dataset_name) {
+          setDatasetName(question.dataset_name);
+        }
+      }, [question]);
+      
 
     useEffect(() => {
         fetchNextQuestion();
