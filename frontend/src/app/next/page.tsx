@@ -137,25 +137,23 @@ export default function QuizPage() {
             return;
         }
 
-        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}&time=${time}`;
-        const body = JSON.stringify(validAnswers); // tylko lista ID
+        const url = `https://webownik-backend.onrender.com/quiz/quiz/answer/?question_id=${question.id}`; // ✅ `question_id` w URL
+        const body = JSON.stringify(validAnswers); // ✅ Wysyłamy czystą listę liczb
 
+        console.log("📤 Wysyłane dane (JSON):", body, "➡️ do URL:", url); // Debugowanie
 
         try {
             const res = await fetch(url, {
                 method: "POST",
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: body,
+                body: body
             });
 
             const data = await res.json();
             console.log("✅ Odpowiedź backendu:", data);
-
-            // ...reszta kodu zostaje bez zmian
-
 
             if (!res.ok) {
                 const errorMessage = Array.isArray(data.detail)
@@ -228,7 +226,7 @@ export default function QuizPage() {
                 </button>
 
                 <h2 className="text-2xl font-bold mb-4 text-center">
-                    {datasetName ? `${datasetName}` : ""}
+                    {datasetName ? `${datasetName}`: ""}
                 </h2>
 
 
